@@ -1,7 +1,7 @@
 import asyncio
 import time
 
-ADDR = '192.168.0.64'
+ADDR = '192.168.0.8'
 PORT = 12345
 CLIENTS = []
 TYPE = 'H'
@@ -13,12 +13,12 @@ async def serve(reader, writer):
 	CLIENTS.append(client)
 	if TYPE == 'C':
 		writer.write(TYPE.encode('utf-8'))
-		writer.write(CLIENTS[index-1][0].encode('utf-8'))
+		writer.write(CLIENTS[0][0].encode('utf-8'))
 		TYPE = 'H'
 	else:
 		writer.write(TYPE.encode('utf-8'))
 		TYPE = 'C'
-	
+
 	if len(CLIENTS) == 2:
 		CLIENTS = []
 
